@@ -12,3 +12,46 @@ const images = [
     alt: 'Group of Horses Running',
   },
 ];
+
+
+const galleryList = document.querySelector('ul.gallery');
+
+galleryList.style.listStyleType = "none";
+galleryList.style.listStyle = "none";
+galleryList.style.display = "flex";
+galleryList.style.height = "300px";
+galleryList.style.padding = "0 5px";
+galleryList.style.flexWrap = "wrap;"
+galleryList.style.gap = "40px";
+
+// console.log(galleryList);
+
+// функція генерації однієї лі-шки:
+  const galleryItem = (image) => {
+  const listItem = document.createElement('li');
+  listItem.style.display = "flex";
+  listItem.style.position = "relative";
+  listItem.style.height = "100%";
+  listItem.style.width = "100%";
+
+  const imgItem = document.createElement('img');
+  imgItem.src = `${image.url}`;
+  imgItem.alt = `${image.alt}`;
+  imgItem.style.display = "block";
+  imgItem.style.objectFit = "cover";
+
+
+  // вкладаємо імг у лі-шку
+  listItem.append(imgItem);
+
+  return listItem;
+
+}
+
+// мапаємо масив у лі-шки
+const galleryItems = images.map(galleryItem);
+// console.log(galleryItems);
+
+// вставляємо лі-шки в ул-ку
+galleryList.append(...galleryItems)
+
