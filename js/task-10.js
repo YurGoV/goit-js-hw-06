@@ -6,18 +6,18 @@ const divCollection = document.querySelector('div#boxes');
 
 
 onCreateCollectionBtn.addEventListener('click', getAmount);
-onDestroyCollectionBtn.addEventListener('click', clearBoxes);
+onDestroyCollectionBtn.addEventListener('click', destroyBoxes);
 
 function getAmount() {
   const amount = document.querySelector('div#controls > input').value;
-  createBoxes(amount);
-}
-
-function createBoxes(amount) {
+  // console.log(amount);
   let size = 30;
+
+  // робимо масив з колекції дів-ок ;)
   const writeDiv = [];
-  console.log(amount);
+
   for (let i = 1; i <= amount; i += 1) {
+  // створюємо
   const oneDiv = document.createElement('div')
   oneDiv.style.minWidth = `${size}px`;
   oneDiv.style.height = `${size}px`;
@@ -25,23 +25,31 @@ function createBoxes(amount) {
   oneDiv.style.borderRadius = "8%";
   oneDiv.style.backgroundColor = getRandomHexColor();
 
+  // пушимо в колекцію
   writeDiv.push(oneDiv);
 
   size = size + 10;
   };
   
-  divCollection.style.display = "flex";
-  divCollection.style.flexWrap = "wrap";
-  divCollection.style.padding = "5px 0";
-  divCollection.style.alignItems = "flex-end";
-  divCollection.style.gap = "10px";
+  // додаємо колекції стилів (поодному, як тренування), якщо перше/пере/завантаження сторінки
+  if (divCollection.style.length === 0){
+    divCollection.style.display = "flex";
+    divCollection.style.flexWrap = "wrap";
+    divCollection.style.padding = "5px 0";
+    divCollection.style.alignItems = "flex-end";
+    divCollection.style.gap = "10px";
+    // console.log("пишемо стилі");
+  }
+  // додаємо у колекцію дів-ки
   divCollection.append(...writeDiv);
 }
 
-function clearBoxes() {
+function destroyBoxes() {
   console.log(document.querySelector('div#boxes'));
+  console.log(divCollection.style.length);
   divCollection.innerHTML = '';
   inputNumElCollection.value = "";
+  // divCollection.style = ""; // стилі залишаємо.
 }
 
 function getRandomHexColor() {
