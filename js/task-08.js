@@ -8,9 +8,9 @@ function onFormSubmit(event) {
 
     const formElements = event.currentTarget.elements;
     const email = formElements.email.value;
-    console.log(email);
+    // console.log(email);
     const password = formElements.password.value;
-    console.log(password);
+    // console.log(password);
 
     //    alert section
     if (email.length === 0 && password.length === 0) {
