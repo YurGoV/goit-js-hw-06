@@ -16,38 +16,19 @@ const images = [
 
 const galleryList = document.querySelector('ul.gallery');
 
-galleryList.style.listStyle = "none";
-galleryList.style.display = "flex";
-galleryList.style.padding = "0 5px";
-galleryList.style.flexWrap = "wrap";
-galleryList.style.gap = "10px";
-galleryList.style.gap = "40px";
+// добавляємо стилі в ул-ку
+galleryList.style = "list-style: none; display: flex; flex-wrap: wrap;  padding: 0 5px; gap: 10px";
 
-// функція генерації однієї лі-шки:
-  const galleryItem = (image) => {
-  const listItem = document.createElement('li');
-  listItem.style.flexBasis = "calc((100% - 20px) / 4)";
-
-  const imgItem = document.createElement('img');
-  imgItem.src = `${image.url}`;
-  imgItem.alt = `${image.alt}`;
-  imgItem.style.display = "flex";
-  imgItem.style.objectFit = "contain";
-  imgItem.style.width = "100%";
-  imgItem.style.height = "100%";
-
-
-  // вкладаємо імг у лі-шку
-  listItem.append(imgItem);
-
-  return listItem;
-
-}
-
-// мапаємо масив у лі-шки
-const galleryItems = images.map(galleryItem);
+// генеруємо строку :
+const galleryItems = images.map((image) =>
+  `<li style="flex-basis: calc((100% - 20px) / 4)">
+  <img src="${image.url}" alt="${image.alt}" style="display: flex; object-fit: contain; width: 100%; height: 100%;">
+  </li>`)
+  .join("");  
 // console.log(galleryItems);
 
-// вставляємо лі-шки в ул-ку
-galleryList.append(...galleryItems)
+
+// інсертимо строку в ул-ку
+galleryList.insertAdjacentHTML("afterbegin", galleryItems);
+
 
