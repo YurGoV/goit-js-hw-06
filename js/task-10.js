@@ -45,8 +45,8 @@ function getAmount() {
 }
 
 function destroyBoxes() {
-  console.log(document.querySelector('div#boxes'));
-  console.log(divCollection.style.length);
+  // console.log(document.querySelector('div#boxes'));
+  // console.log(divCollection.style.length);
   divCollection.innerHTML = '';
   inputNumElCollection.value = "";
   // divCollection.style = ""; // стилі залишаємо.
